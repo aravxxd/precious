@@ -2,77 +2,104 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hello Precious</title>
+<title>Hello Precious Sister</title>
 
 <style>
 
 body{
-    margin:0;
-    padding:0;
-    background:#ffc0cb;
-    height:100vh;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family: 'Poppins', sans-serif;
+margin:0;
+padding:0;
+background:#ffdbe7;
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Poppins, sans-serif;
 }
 
 .container{
-    text-align:center;
-    z-index:2;
+text-align:center;
+z-index:2;
 }
 
-h1{
-    font-size:48px;
-    color:white;
+.text{
+font-size:48px;
+color:white;
+-webkit-text-stroke: 1.5px black;
+text-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
-h2{
-    font-size:28px;
-    color:white;
-    margin-top:10px;
+.subtext{
+font-size:28px;
+color:white;
+-webkit-text-stroke:1px black;
+margin-top:10px;
 }
 
 .next-btn{
-    margin-top:40px;
-    padding:14px 40px;
-    font-size:20px;
-    border:none;
-    border-radius:30px;
-    background:white;
-    color:#ff69b4;
-    cursor:pointer;
-    animation: glow 2s infinite alternate;
+margin-top:40px;
+padding:14px 45px;
+font-size:20px;
+border:none;
+border-radius:40px;
+background:white;
+color:#ff4fa3;
+cursor:pointer;
+animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-    from{
-        box-shadow:0 0 10px white,0 0 20px #ff69b4;
-    }
-    to{
-        box-shadow:0 0 20px white,0 0 40px #ff69b4;
-    }
+from{
+box-shadow:0 0 10px white,0 0 20px #ff4fa3;
+}
+to{
+box-shadow:0 0 20px white,0 0 40px #ff4fa3;
+}
 }
 
-/* falling hearts */
+/* hearts */
 
 .heart{
-    position:absolute;
-    color:white;
-    font-size:20px;
-    animation: fall linear infinite;
+position:absolute;
+color:white;
+font-size:20px;
+animation:fall linear infinite;
 }
 
 @keyframes fall{
-    0%{
-        transform:translateY(-10vh);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(110vh);
-        opacity:0;
-    }
+0%{
+transform:translateY(-10vh);
+opacity:1;
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+/* particles */
+
+.particle{
+position:absolute;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+opacity:0.6;
+animation:float 8s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-40px);
+}
+100%{
+transform:translateY(0px);
+}
 }
 
 </style>
@@ -82,8 +109,9 @@ h2{
 
 <div class="container">
 
-<h1>Hello Precious</h1>
-<h2>Thank you for existing</h2>
+<div class="text" id="line1"></div>
+<div class="subtext" id="line2"></div>
+<div class="subtext" id="line3"></div>
 
 <button class="next-btn">Next</button>
 
@@ -91,25 +119,71 @@ h2{
 
 <script>
 
-/* create falling hearts */
+/* typing animation */
+
+const text1 = "Hello Precious";
+const text2 = "Thank you for existing";
+const text3 = "Past, I made something for you, I hope you like it...";
+
+function typeText(text, element, speed, callback){
+let i = 0;
+function typing(){
+if(i < text.length){
+element.innerHTML += text.charAt(i);
+i++;
+setTimeout(typing, speed);
+}
+else{
+if(callback) callback();
+}
+}
+typing();
+}
+
+typeText(text1, document.getElementById("line1"), 80, function(){
+typeText(text2, document.getElementById("line2"), 60, function(){
+typeText(text3, document.getElementById("line3"), 50);
+});
+});
+
+/* falling hearts */
 
 function createHeart(){
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML="❤";
+const heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤";
 
-    heart.style.left = Math.random()*100+"vw";
-    heart.style.animationDuration = (Math.random()*3+3)+"s";
-    heart.style.fontSize = (Math.random()*10+15)+"px";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+heart.style.fontSize=(Math.random()*10+15)+"px";
 
-    document.body.appendChild(heart);
+document.body.appendChild(heart);
 
-    setTimeout(()=>{
-        heart.remove();
-    },6000);
+setTimeout(()=>{
+heart.remove();
+},6000);
 }
 
 setInterval(createHeart,300);
+
+/* floating particles */
+
+function createParticle(){
+const particle=document.createElement("div");
+particle.classList.add("particle");
+
+particle.style.left=Math.random()*100+"vw";
+particle.style.top=Math.random()*100+"vh";
+particle.style.animationDuration=(Math.random()*5+5)+"s";
+
+document.body.appendChild(particle);
+
+setTimeout(()=>{
+particle.remove();
+},10000);
+}
+
+setInterval(createParticle,500);
 
 </script>
 
