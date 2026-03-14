@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hello Precious</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    background:#ffc0cb;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    text-align:center;
+    z-index:2;
+}
+
+h1{
+    font-size:48px;
+    color:white;
+}
+
+h2{
+    font-size:28px;
+    color:white;
+    margin-top:10px;
+}
+
+.next-btn{
+    margin-top:40px;
+    padding:14px 40px;
+    font-size:20px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff69b4;
+    cursor:pointer;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        box-shadow:0 0 10px white,0 0 20px #ff69b4;
+    }
+    to{
+        box-shadow:0 0 20px white,0 0 40px #ff69b4;
+    }
+}
+
+/* falling hearts */
+
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-10vh);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Hello Precious</h1>
+<h2>Thank you for existing</h2>
+
+<button class="next-btn">Next</button>
+
+</div>
+
+<script>
+
+/* create falling hearts */
+
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤";
+
+    heart.style.left = Math.random()*100+"vw";
+    heart.style.animationDuration = (Math.random()*3+3)+"s";
+    heart.style.fontSize = (Math.random()*10+15)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
