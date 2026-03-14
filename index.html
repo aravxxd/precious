@@ -59,18 +59,33 @@ background:url("tulips.jpg") center/cover no-repeat;
 justify-content:center;
 align-items:center;
 position:relative;
+overflow:auto;
 }
 
 /* GLASS BOX */
 
 .glass{
-background:rgba(255,255,255,0.35);
+background:rgba(255,255,255,0.40);
 backdrop-filter:blur(8px);
 padding:50px;
 border-radius:20px;
-max-width:700px;
+max-width:720px;
 text-align:center;
 box-shadow:0 10px 30px rgba(0,0,0,0.25);
+animation:slideUp 1.2s ease;
+}
+
+/* SCROLL ANIMATION */
+
+@keyframes slideUp{
+from{
+opacity:0;
+transform:translateY(60px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 /* TITLES */
@@ -86,23 +101,21 @@ margin-bottom:20px;
 font-family:'Playfair Display', serif;
 font-size:40px;
 color:#d63384;
-margin-bottom:20px;
+margin-bottom:25px;
 }
 
-/* TEXT */
-
-.page2text{
-font-size:20px;
-color:#333;
-line-height:1.6;
-}
+/* PAGE 3 LIST */
 
 .points{
 text-align:left;
 font-family:'Playfair Display', serif;
-font-size:18px;
+font-size:19px;
 line-height:1.7;
 color:#222;
+}
+
+.points p{
+margin-bottom:18px;
 }
 
 /* BUTTON */
@@ -156,7 +169,7 @@ animation:float 8s linear infinite;
 100%{transform:translateY(0px);}
 }
 
-/* STARS (PAGE 3) */
+/* STARS (PAGE 3 ONLY) */
 
 .stars{
 position:absolute;
@@ -178,14 +191,8 @@ animation:twinkle 3s infinite alternate;
 }
 
 @keyframes twinkle{
-from{
-opacity:0.3;
-transform:scale(1);
-}
-to{
-opacity:1;
-transform:scale(1.6);
-}
+from{opacity:0.3; transform:scale(1);}
+to{opacity:1; transform:scale(1.6);}
 }
 
 </style>
@@ -249,19 +256,19 @@ In short, I wanna be like you so I can be in this world for longer...
 
 <div class="points">
 
-1. Please keep yourself hydrated always throughout the day to keep your precious body healthy.<br><br>
+<p>💖 Please keep yourself hydrated always throughout the day to keep your precious body healthy.</p>
 
-2. Try to sleep as early as possible so you get good 6-7 hours of sleep everyday and to protect your inner child.<br><br>
+<p>💖 Try to sleep as early as possible so you get good 6-7 hours of sleep everyday and to protect your inner child.</p>
 
-3. Eat well and please eat properly whenever you do to keep yourself healthy and active.<br><br>
+<p>💖 Eat well and please eat properly whenever you do to keep yourself healthy and active.</p>
 
-4. Please continue doing activities like walking, stretching and all you do to keep yourself healthy.<br><br>
+<p>💖 Please continue doing activities like walking, stretching and all you do to keep yourself healthy.</p>
 
-5. Do not raise your temper on anybody. Your health matters the most and so please do not even bother the slightest when something bothers you. We make your body forget something called BP existed.<br><br>
+<p>💖 Do not raise your temper on anybody. Your health matters the most and so please do not even bother the slightest when something bothers you.</p>
 
-6. Say no to things you don’t want to do or see or listen.<br><br>
+<p>💖 Say no to things you don’t want to do or see or listen.</p>
 
-7. Be kind to yourself. I love the fact that you are so knowledgeable about things nobody would know and give so much info as well as speak so well and so intelligently. Please do not change or feel bad, I swear that's your definition and pride.
+<p>💖 Be kind to yourself. I love the fact that you are so knowledgeable about things nobody would know and speak so intelligently. Please never change.</p>
 
 </div>
 
@@ -275,7 +282,7 @@ In short, I wanna be like you so I can be in this world for longer...
 
 /* TYPING INTRO */
 
-const text1="Hello Precious sister";
+const text1="Hello Precious";
 const text2="Thank you for existing";
 const text3="I made something for you, I hope you like it...";
 
@@ -345,7 +352,7 @@ setTimeout(()=>{particle.remove();},10000);
 
 setInterval(createParticle,500);
 
-/* STARS ONLY FOR PAGE 3 */
+/* STARS FOR PAGE 3 */
 
 function createStar(){
 const star=document.createElement("div");
