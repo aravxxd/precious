@@ -2,34 +2,38 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Most important</title>
+<title>Hello Precious</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
 
+/* GENERAL */
+
 body{
 margin:0;
 padding:0;
+height:100vh;
+font-family:'Quicksand', sans-serif;
+overflow:hidden;
+}
+
+/* PAGE 1 */
+
+#page1{
 background:#ffe6f0;
 height:100vh;
-overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-font-family:'Quicksand', sans-serif;
-}
-
-.container{
 text-align:center;
-z-index:2;
+position:relative;
 }
 
 .title{
 font-family:'Pacifico', cursive;
-font-size:50px;
+font-size:52px;
 color:#ff4fa3;
-margin-bottom:10px;
 }
 
 .text{
@@ -37,6 +41,41 @@ font-size:28px;
 color:#444;
 margin-top:6px;
 }
+
+/* PAGE 2 */
+
+#page2{
+display:none;
+height:100vh;
+background:url("dog.jpg") center/cover no-repeat;
+justify-content:center;
+align-items:center;
+}
+
+.glass{
+background:rgba(255,255,255,0.35);
+backdrop-filter:blur(8px);
+padding:50px;
+border-radius:20px;
+max-width:650px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+.page2title{
+font-family:'Pacifico', cursive;
+font-size:42px;
+color:#ff4fa3;
+margin-bottom:20px;
+}
+
+.page2text{
+font-size:20px;
+color:#333;
+line-height:1.6;
+}
+
+/* BUTTON */
 
 .next-btn{
 margin-top:40px;
@@ -48,19 +87,14 @@ background:white;
 color:#ff4fa3;
 cursor:pointer;
 animation:glow 2s infinite alternate;
-font-family:'Quicksand', sans-serif;
 }
 
 @keyframes glow{
-from{
-box-shadow:0 0 10px white,0 0 20px #ff4fa3;
-}
-to{
-box-shadow:0 0 20px white,0 0 40px #ff4fa3;
-}
+from{box-shadow:0 0 10px white,0 0 20px #ff4fa3;}
+to{box-shadow:0 0 20px white,0 0 40px #ff4fa3;}
 }
 
-/* hearts */
+/* HEARTS */
 
 .heart{
 position:absolute;
@@ -70,17 +104,11 @@ animation:fall linear infinite;
 }
 
 @keyframes fall{
-0%{
-transform:translateY(-10vh);
-opacity:1;
-}
-100%{
-transform:translateY(110vh);
-opacity:0;
-}
+0%{transform:translateY(-10vh);opacity:1;}
+100%{transform:translateY(110vh);opacity:0;}
 }
 
-/* floating particles */
+/* PARTICLES */
 
 .particle{
 position:absolute;
@@ -103,48 +131,85 @@ animation:float 8s linear infinite;
 
 <body>
 
-<div class="container">
+<!-- PAGE 1 -->
+
+<div id="page1">
+
+<div>
 
 <div class="title" id="line1"></div>
 <div class="text" id="line2"></div>
 <div class="text" id="line3"></div>
 
+<button class="next-btn" onclick="nextPage()">Next</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div id="page2">
+
+<div class="glass">
+
+<div class="page2title">Why are you special?</div>
+
+<div class="page2text">
+
+You are the kind of person who should realise even more of how much light you carry inside you.
+You are being the best version of yourself and you might please care least about people who bother you.
+I have to learn a lot from you.
+
+Like how I started loving books because of you.
+I want to be as courageous as you.
+I want to be strong like you.
+
+In short, I wanna be like you so I can be in this world for longer...
+
+</div>
+
 <button class="next-btn">Next</button>
+
+</div>
 
 </div>
 
 <script>
 
-/* typing animation */
+/* TYPING */
 
-const text1 = "Hello Precious sister";
-const text2 = "Thank you so much for existing";
-const text3 = "I made something for you, I hope you will like it...";
+const text1="Hello Precious sister";
+const text2="Thank you for existing";
+const text3="I made something for you, I hope you like it...";
 
-function typeText(text, element, speed, callback){
-let i = 0;
-
+function typeText(text,element,speed,callback){
+let i=0;
 function typing(){
-if(i < text.length){
-element.innerHTML += text.charAt(i);
+if(i<text.length){
+element.innerHTML+=text.charAt(i);
 i++;
-setTimeout(typing, speed);
-}
-else{
-if(callback) callback();
-}
-}
-
+setTimeout(typing,speed);
+}else{
+if(callback)callback();
+}}
 typing();
 }
 
-typeText(text1, document.getElementById("line1"), 80, function(){
-typeText(text2, document.getElementById("line2"), 60, function(){
-typeText(text3, document.getElementById("line3"), 50);
+typeText(text1,document.getElementById("line1"),80,function(){
+typeText(text2,document.getElementById("line2"),60,function(){
+typeText(text3,document.getElementById("line3"),50);
 });
 });
 
-/* falling hearts */
+/* SWITCH PAGE */
+
+function nextPage(){
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").style.display="flex";
+}
+
+/* HEARTS */
 
 function createHeart(){
 const heart=document.createElement("div");
@@ -157,14 +222,12 @@ heart.style.fontSize=(Math.random()*10+15)+"px";
 
 document.body.appendChild(heart);
 
-setTimeout(()=>{
-heart.remove();
-},6000);
+setTimeout(()=>{heart.remove();},6000);
 }
 
 setInterval(createHeart,300);
 
-/* floating particles */
+/* PARTICLES */
 
 function createParticle(){
 const particle=document.createElement("div");
@@ -176,9 +239,7 @@ particle.style.animationDuration=(Math.random()*5+5)+"s";
 
 document.body.appendChild(particle);
 
-setTimeout(()=>{
-particle.remove();
-},10000);
+setTimeout(()=>{particle.remove();},10000);
 }
 
 setInterval(createParticle,500);
