@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hello Precious</title>
+<title>Precious</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Pacifico&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
@@ -27,17 +27,17 @@ html, body{
   display:none; 
   width:100%;
   height:100dvh;
-  overflow-y:auto; /* Allows scrolling inside the page only when needed */
+  overflow-y:auto; 
   overflow-x:hidden;
   position:relative;
 }
 
-/* 3. WRAPPER TO PERFECTLY CENTER CONTENT OR ALLOW SCROLLING WITHOUT CUT-OFF */
+/* 3. WRAPPER TO PERFECTLY CENTER CONTENT */
 .page-wrapper{
   min-height:100%;
   display:flex;
   flex-direction:column;
-  padding:70px 15px; /* Spacing so it doesn't touch edges on mobile */
+  padding:70px 15px;
 }
 
 /* GLOBAL TOP-LEFT BACK BUTTON */
@@ -69,15 +69,11 @@ html, body{
 #page3 { background:url("tulips.jpg") center/cover no-repeat; }
 #page4 { background:linear-gradient(#bfe9ff,#e6f7ff); }
 #page5 { background:url("purple-book.jpg") center/cover no-repeat; }
-
-/* Page 6 Background with built-in dark overlay so it doesn't scroll away */
-#page6 { 
-  background:linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url("cheesecake.jpg") center/cover no-repeat; 
-}
+#page6 { background:linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url("cheesecake.jpg") center/cover no-repeat; }
 
 /* CONTAINERS */
 .container, .glass, .page4box, .page5box, .page6box, #page1-content {
-  margin:auto; /* Centers vertically and horizontally inside the flex wrapper */
+  margin:auto;
   width:100%;
 }
 
@@ -200,6 +196,15 @@ html, body{
   white-space:pre-line;
 }
 
+/* SIGNATURE */
+.signature{
+  margin-top:25px;
+  font-size:0.85rem;
+  color:rgba(255,255,255,0.6);
+  font-style:italic;
+  letter-spacing:1px;
+}
+
 /* BUTTON */
 .next-btn{
   margin-top:28px;
@@ -223,7 +228,7 @@ html, body{
   to{box-shadow:0 0 20px white,0 0 40px #ff4fa3;}
 }
 
-/* HEARTS, STARS, PETALS (Fixed to Viewport so they fall nicely) */
+/* HEARTS, STARS, PETALS */
 .heart, .petal{
   position:fixed;
   top:0;
@@ -242,7 +247,7 @@ html, body{
 }
 
 .stars{
-  position:fixed; /* Keeps stars from scrolling away */
+  position:fixed;
   inset:0;
   pointer-events:none;
   z-index:0;
@@ -323,12 +328,12 @@ html, body{
       <div class="page3title">May I remind you few things?</div>
       <div class="points">
         <div class="reminder">💖 Please keep yourself hydrated throughout the day.</div>
-        <div class="reminder">💖 Try to sleep early and get 6-7 hours of rest.</div>
-        <div class="reminder">💖 Eat properly and stay healthy.</div>
-        <div class="reminder">💖 Continue walking and stretching.</div>
-        <div class="reminder">💖 Do not raise your temper on anyone.</div>
-        <div class="reminder">💖 Say no to things you don't want.</div>
-        <div class="reminder">💖 Be kind to yourself and never change.</div>
+        <div class="reminder">💖 Please Try to sleep early and get 6-7 hours of rest.</div>
+        <div class="reminder">💖 Please Eat properly and well and stay healthy.</div>
+        <div class="reminder">💖 Continue activities like walking and stretching....</div>
+        <div class="reminder">💖 Do not raise your temper on anyone. Your health matters the most so please ignore all that bothers even the slightest to you </div>
+        <div class="reminder">💖 Say no to things you don't want because you are the queen.</div>
+        <div class="reminder">💖 Be kind to yourself and never change. I love the fact about how knowledged you are about things nobody would know and give so much info and speak so well and fluently</div>
       </div>
       <button class="next-btn" onclick="showPage('page4')">Next</button>
     </div>
@@ -342,17 +347,17 @@ html, body{
       <div class="page4title">Why are you precious?</div>
       <div class="precious-list">
         <div class="precious-item">
-          • <b>The Music in Your Voice:</b> There is a rare magic when you sing. It feels like you pour your soul into every melody.
+          • <b>1. The Music in Your Voice: There is a rare kind of magic when you sing. It’s not just about the music; it’s the way you seem to pour your soul into every melody. I could listen to you forever and never get tired of the tunes..
         </div>
         <div class="precious-item">
-          • <b>Your Love for Food and Life:</b> Seeing your face light up when talking about food is one of my favorite sights.
+          • <b>Your Love for Food and life: I love how much you appreciate the good things—especially when its food. Whether it’s the comfort of Kerala cuisine, cheesecake or discovering a new favorite dish, seeing your face light up when we speak about food is my favorite sights...
         </div>
         <div class="precious-item">
-          • <b>The Care You Provide:</b> You have a heart bigger than you let on and make ordinary moments extraordinary.
+          • <b>The Care You Provide:</b> You have this effortless grace and a heart that’s bigger than you let on. You make the ordinary feel extraordinary by being around you..
         </div>
       </div>
       <div class="quote">
-        "Let it be the world's best coffee you make or the moments when only you understand I'm breaking and comfort me — I'm grateful for your presence."
+        "Let it be the world's best coffee you make or the moments when only you understand I'm breaking and you comfort me — I'm grateful for your presence."
       </div>
       <div class="btn-center">
         <button class="next-btn" onclick="showPage('page5')">Next</button>
@@ -369,7 +374,7 @@ html, body{
       <ul class="page5list">
         <li>I made this just to remind you that you're seen, you're heard, and you're incredibly precious to me. You make my world a lot brighter just by existing in it.</li>
         <li>Thanks for letting me be myself.</li>
-        <li>I think love is about giving everything one can. I've longed so much to be loved and have done so much just to be heard and talked to once or twice a day. I don't know when that will change, and it hurts to keep giving so much for crumbs, but I've realised I have to be stronger to deal with this. Still, every single effort I put in for you feels worth every second of my time.</li>
+        <li>I think love is about giving everything one can. I've longed so much to be loved and have done so much just to be heard and talked to once or twice a day. I don't know when that will change, and it hurts to keep giving so much for crumbs to people, but I've realised I have to be stronger to deal with this. But, every single effort I put in for you feels worth every second of my time and my heart feels comfort and joy..!.</li>
       </ul>
       <div class="btn-center">
         <button class="next-btn" onclick="showPage('page6')">Next</button>
@@ -391,7 +396,8 @@ The reason I treat you special is because you are the only one who's kind and lo
 Please don't tell anyone anywhere that I made this for you or I'm going to be misunderstood on peak. It's going to stay between only us.
       </div>
       <div class="btn-center">
-        <button class="next-btn" onclick="showPage('page1')">Next</button>
+        <button class="next-btn" onclick="showPage('page1')">Restart story</button>
+        <div class="signature">Made by Ara</div>
       </div>
     </div>
   </div>
@@ -412,14 +418,10 @@ function updateBackButton(){
 
 /* PAGE SWITCH */
 function showPage(id){
-  // Hide all
   document.querySelectorAll(".page").forEach(p => p.style.display = "none");
   
-  // Show target
   const targetPage = document.getElementById(id);
   targetPage.style.display = "block";
-  
-  // Force scroll position to Top of the box (so you don't start midway down on long pages)
   targetPage.scrollTop = 0;
 
   currentPage = id;
@@ -452,7 +454,7 @@ const line1=document.getElementById("line1");
 const line2=document.getElementById("line2");
 const line3=document.getElementById("line3");
 
-typeText("Hello Precious",line1,80);
+typeText("Hello Precious Sister",line1,80);
 setTimeout(()=>typeText("Thank you for existing",line2,60),1200);
 setTimeout(()=>typeText("I made something for you, I hope you like it...",line3,50),2400);
 
@@ -473,7 +475,6 @@ function createStar(){
   const starsWrap=document.querySelector("#page3 .stars");
   if(!starsWrap) return;
   
-  /* only create stars if page 3 is visible to save resources */
   if(document.getElementById("page3").style.display === "none") return;
 
   const s=document.createElement("div");
