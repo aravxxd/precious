@@ -15,6 +15,7 @@ html,body{
   margin:0;
   padding:0;
   font-family:'Quicksand', sans-serif;
+  height:100%;
 }
 
 /* PAGE SYSTEM */
@@ -58,7 +59,7 @@ html,body{
   background:#ffe6f0;
   text-align:center;
   position:relative;
-  overflow:hidden;
+  overflow:hidden; /* no scroll here */
 }
 
 .title{
@@ -89,8 +90,10 @@ html,body{
 #page3{
   background:url("tulips.jpg") center/cover no-repeat;
   position:relative;
-  padding:120px 0;
-  overflow-y:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center; /* vertically center the glass */
+  padding:40px 0;
 }
 
 /* PAGE 4 */
@@ -107,11 +110,11 @@ html,body{
   display:flex;
   justify-content:center;
   align-items:center;
-  text-align:center;
+  text-align:left;
   position:relative;
   color:white;
   padding:40px 10px;
-  background:url("vjmin.jpg") center/cover no-repeat; /* UNBLURRED IMAGE */
+  background:url("purple-book.jpg") center/cover no-repeat; /* your purple book image */
 }
 
 /* CONTAINERS */
@@ -214,24 +217,31 @@ html,body{
   border-radius:10px;
 }
 
-/* PAGE 5 */
+/* PAGE 5 transparent content box */
 
 .page5box{
   background:rgba(0,0,0,0.55);
-  padding:60px;
+  padding:40px 35px;
   border-radius:20px;
-  max-width:750px;
+  max-width:780px;
+  width:90%;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-.page5quote{
-  font-size:30px;
-  font-style:italic;
+.page5title{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
   margin-bottom:25px;
 }
 
-.page5text{
+.page5list{
+  list-style:disc;
+  padding-left:22px;
+  display:flex;
+  flex-direction:column;
+  gap:18px; /* even gaps */
   font-size:18px;
-  line-height:1.8;
+  line-height:1.7;
 }
 
 /* BUTTON */
@@ -399,19 +409,15 @@ html,body{
 <!-- PAGE 5 -->
 <div id="page5" class="page">
   <div class="page5box">
-    <div class="page5quote">
-      "One day when this cheer dies down, stay. You are my soulmate."
-    </div>
+    <div class="page5title">What I wanna say?</div>
 
-    <div class="page5text">
-      People come and go, and feelings can be loud or quiet.<br>
-      But when everything else gets still, you’re the one I want standing there.<br><br>
-      Labels don't really cover it.<br><br>
-      In the BTS sense of the word—through the music, the food, and the late nights—you are my soulmate.
-    </div>
+    <ul class="page5list">
+      <li>I made this just to remind you that you’re seen, you’re heard, and you’re incredibly precious to me. You make my world a lot brighter just by existing in it.</li>
+      <li>Thanks for letting me be myself.</li>
+      <li>I think love is about giving everything one can. I have longed so much to be loved and done so much just to be heard and talked for once or twice a day, I don’t know when that will change, but the fate hurts doing so much for crumbs, and I realised I have to be stronger to even deal with this.</li>
+    </ul>
 
-    <!-- NEXT BUTTON ON PAGE 5 -->
-    <button class="next-btn" onclick="showPage('page1')">Restart</button>
+    <button class="next-btn" onclick="showPage('page1')">Restart story</button>
   </div>
 </div>
 
