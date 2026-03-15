@@ -25,6 +25,30 @@ html,body{
   min-height:100vh;
 }
 
+/* GLOBAL TOP-LEFT BACK BUTTON */
+
+.back-top{
+  position:fixed;
+  top:16px;
+  left:16px;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 18px;
+  border-radius:999px;
+  border:none;
+  background:rgba(0,0,0,0.35);
+  color:#fff;
+  font-size:14px;
+  cursor:pointer;
+  backdrop-filter:blur(6px);
+}
+
+.back-top span{
+  font-size:18px;
+}
+
 /* PAGE 1 */
 
 #page1{
@@ -87,15 +111,7 @@ html,body{
   position:relative;
   color:white;
   padding:40px 10px;
-}
-
-#page5::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url("vjmin.jpg") center/cover no-repeat;
-  filter:blur(6px);
-  z-index:-1;
+  background:url("vjmin.jpg") center/cover no-repeat; /* UNBLURRED IMAGE */
 }
 
 /* CONTAINERS */
@@ -298,6 +314,11 @@ html,body{
 
 <body>
 
+<!-- GLOBAL BACK BUTTON (hidden on page1) -->
+<button id="backTopBtn" class="back-top" style="display:none" onclick="goBack()">
+  <span>←</span> Back
+</button>
+
 <!-- PAGE 1 -->
 <div id="page1" class="page" style="display:flex">
   <div>
@@ -388,10 +409,25 @@ html,body{
       Labels don't really cover it.<br><br>
       In the BTS sense of the word—through the music, the food, and the late nights—you are my soulmate.
     </div>
+
+    <!-- NEXT BUTTON ON PAGE 5 -->
+    <button class="next-btn" onclick="showPage('page1')">Restart</button>
   </div>
 </div>
 
 <script>
+let currentPage = "page1";
+
+/* SHOW/HIDE GLOBAL BACK BUTTON */
+function updateBackButton(){
+  const btn = document.getElementById("backTopBtn");
+  if(currentPage === "page1"){
+    btn.style.display = "none";
+  }else{
+    btn.style.display = "flex";
+  }
+}
+
 /* PAGE SWITCH */
 function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.style.display="none");
@@ -402,6 +438,16 @@ function showPage(id){
   }else{
     page.style.display="block";
   }
+  currentPage = id;
+  updateBackButton();
+}
+
+/* BACK BUTTON LOGIC */
+function goBack(){
+  if(currentPage === "page2") showPage("page1");
+  else if(currentPage === "page3") showPage("page2");
+  else if(currentPage === "page4") showPage("page3");
+  else if(currentPage === "page5") showPage("page4");
 }
 
 /* TYPING */
@@ -451,7 +497,7 @@ function createStar(){
 }
 setInterval(createStar,200);
 
-/* PETALS (floating over whole page) */
+/* PETALS */
 function createPetal(){
   const p=document.createElement("div");
   p.className="petal";
