@@ -14,12 +14,12 @@ font-family:'Quicksand', sans-serif;
 overflow:hidden;
 }
 
-/* PAGE LAYOUT */
+/* PAGE SYSTEM */
 
 .page{
 display:none;
-min-height:100vh;
 width:100%;
+height:100vh;
 }
 
 /* PAGE 1 */
@@ -43,7 +43,7 @@ color:#ff4fa3;
 .text{
 font-size:28px;
 color:#444;
-margin-top:6px;
+margin-top:8px;
 }
 
 /* PAGE 2 */
@@ -64,97 +64,31 @@ line-height:1.6;
 
 #page3{
 background:url("tulips.jpg") center/cover no-repeat;
-
-height:100vh;
 overflow-y:auto;
-
-display:flex;
-justify-content:center;
-align-items:flex-start;
-
-padding-top:100px;
-padding-bottom:120px;
-
+padding:120px 0;
 position:relative;
-}
-
-
-.points{
-display:flex;
-flex-direction:column;
-gap:30px;
-margin-top:30px;
-margin-bottom:40px;
-text-align:left;
-}
-
-.reminder{
-background:rgba(255,255,255,0.75);
-padding:20px;
-border-radius:14px;
-font-size:18px;
-line-height:1.6;
-box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
 /* PAGE 4 */
 
 #page4{
 background:linear-gradient(#bfe9ff,#e6f7ff);
-
-height:100vh;
 overflow-y:auto;
-
-display:flex;
-justify-content:center;
-align-items:flex-start;
-
-padding-top:100px;
-padding-bottom:120px;
+padding:120px 0;
 }
-.page4box{
-background:rgba(255,255,255,0.75);
-padding:50px;
-border-radius:20px;
+
+/* CONTAINERS */
+
+.container{
 max-width:720px;
 width:85%;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+margin:auto;
 }
-
-.precious-list{
-display:flex;
-flex-direction:column;
-gap:35px;
-margin-bottom:40px;
-}
-
-.precious-item{
-background:white;
-padding:20px;
-border-radius:14px;
-font-size:18px;
-line-height:1.7;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.quote{
-margin-top:20px;
-padding:25px;
-font-style:italic;
-background:#fff;
-border-left:5px solid #ff7ab6;
-border-radius:10px;
-line-height:1.7;
-}
-
-/* COMMON CONTAINER */
 
 .glass{
-background:rgba(255,255,255,0.75);
+background:rgba(255,255,255,0.8);
 padding:50px;
 border-radius:20px;
-max-width:720px;
-width:85%;
 text-align:center;
 box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
@@ -179,8 +113,60 @@ margin-bottom:30px;
 font-family:'Playfair Display',serif;
 font-size:42px;
 color:#ff4fa3;
-margin-bottom:35px;
-text-align:center;
+margin-bottom:40px;
+}
+
+/* PAGE 3 REMINDERS */
+
+.points{
+display:flex;
+flex-direction:column;
+gap:30px;
+margin-bottom:40px;
+text-align:left;
+}
+
+.reminder{
+background:white;
+padding:20px;
+border-radius:14px;
+font-size:18px;
+line-height:1.6;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* PAGE 4 */
+
+.page4box{
+background:white;
+padding:50px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.precious-list{
+display:flex;
+flex-direction:column;
+gap:35px;
+margin-bottom:40px;
+}
+
+.precious-item{
+background:#fff;
+padding:20px;
+border-radius:14px;
+font-size:18px;
+line-height:1.7;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.quote{
+margin-top:20px;
+padding:25px;
+font-style:italic;
+border-left:5px solid #ff7ab6;
+background:#fff;
+border-radius:10px;
 }
 
 /* BUTTON */
@@ -209,7 +195,6 @@ position:absolute;
 color:#ff8fcf;
 font-size:22px;
 animation:fall linear infinite;
-z-index:0;
 }
 
 @keyframes fall{
@@ -242,6 +227,21 @@ from{opacity:0.3;}
 to{opacity:1;}
 }
 
+/* PETALS */
+
+.petal{
+position:absolute;
+color:#ff8fcf;
+font-size:16px;
+animation:petalfall linear infinite;
+pointer-events:none;
+}
+
+@keyframes petalfall{
+0%{transform:translateY(-10vh) rotate(0deg);}
+100%{transform:translateY(110vh) rotate(360deg);}
+}
+
 </style>
 </head>
 
@@ -249,7 +249,7 @@ to{opacity:1;}
 
 <!-- PAGE 1 -->
 
-<div id="page1" class="page" style="display:flex;">
+<div id="page1" class="page" style="display:flex">
 
 <div>
 
@@ -267,16 +267,17 @@ to{opacity:1;}
 
 <div id="page2" class="page">
 
-<div class="glass">
+<div class="glass container">
 
 <div class="page2title">Why are you special?</div>
 
 <div class="page2text">
 
-You are the kind of person who carries light inside you.
+You are the kind of person who carries light inside you.  
 You are becoming the best version of yourself.
 
-I want to be courageous like you.
+Like how I started loving books because of you.  
+I want to be courageous like you.  
 I want to be strong like you.
 
 In short, I want to be like you so I can stay in this world longer.
@@ -295,7 +296,7 @@ In short, I want to be like you so I can stay in this world longer.
 
 <div class="stars"></div>
 
-<div class="glass">
+<div class="glass container">
 
 <div class="page3title">May I remind you few things?</div>
 
@@ -321,28 +322,28 @@ In short, I want to be like you so I can stay in this world longer.
 
 <div id="page4" class="page">
 
-<div class="page4box">
+<div class="container page4box">
 
 <div class="page4title">Why are you precious?</div>
 
 <div class="precious-list">
 
 <div class="precious-item">
-• <b>The Music in Your Voice:</b> There is magic when you sing.
+• <b>The Music in Your Voice:</b> There is a rare magic when you sing. It feels like you pour your soul into every melody.
 </div>
 
 <div class="precious-item">
-• <b>Your Love for Food:</b> Seeing your face light up when talking about food is my favorite sight.
+• <b>Your Love for Food and Life:</b> Seeing your face light up when talking about food is one of my favorite sights.
 </div>
 
 <div class="precious-item">
-• <b>The Care You Provide:</b> Your heart makes ordinary moments extraordinary.
+• <b>The Care You Provide:</b> You have a heart bigger than you let on and make ordinary moments extraordinary.
 </div>
 
 </div>
 
 <div class="quote">
-“Let it be the world’s best coffee you make or the times you understand I’m breaking — I’m grateful for your presence.”
+“Let it be the world's best coffee you make or the moments when only you understand I'm breaking and comfort me — I’m grateful for your presence.”
 </div>
 
 <button class="next-btn">Next</button>
@@ -355,22 +356,22 @@ In short, I want to be like you so I can stay in this world longer.
 
 /* PAGE SWITCH */
 
-function showPage(page){
+function showPage(id){
 document.querySelectorAll(".page").forEach(p=>p.style.display="none");
-document.getElementById(page).style.display="flex";
+document.getElementById(id).style.display="block";
 }
 
 /* TYPING */
 
 function typeText(text,el,speed){
 let i=0;
-function typing(){
+function t(){
 if(i<text.length){
 el.innerHTML+=text.charAt(i);
 i++;
-setTimeout(typing,speed);
+setTimeout(t,speed);
 }}
-typing();
+t();
 }
 
 typeText("Hello Precious",line1,80);
@@ -380,29 +381,40 @@ setTimeout(()=>typeText("I made something for you, I hope you like it...",line3,
 /* HEARTS */
 
 function createHeart(){
-const heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*3+3)+"s";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(Math.random()*3+3)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
 }
-
 setInterval(createHeart,300);
 
 /* STARS */
 
 function createStar(){
-const star=document.createElement("div");
-star.className="star";
-star.style.left=Math.random()*100+"vw";
-star.style.top=Math.random()*100+"vh";
-document.querySelector("#page3 .stars").appendChild(star);
-setTimeout(()=>star.remove(),4000);
+const s=document.createElement("div");
+s.className="star";
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+document.querySelector("#page3 .stars").appendChild(s);
+setTimeout(()=>s.remove(),4000);
 }
-
 setInterval(createStar,200);
+
+/* PETALS */
+
+function createPetal(){
+const p=document.createElement("div");
+p.className="petal";
+p.innerHTML="🌸";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(Math.random()*4+4)+"s";
+document.querySelector("#page3").appendChild(p);
+setTimeout(()=>p.remove(),7000);
+}
+setInterval(createPetal,600);
 
 </script>
 
