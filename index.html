@@ -81,23 +81,30 @@ align-items:center;
 display:none;
 height:100vh;
 background:url("tulips.jpg") center/cover no-repeat;
+
+display:flex;
 justify-content:center;
-align-items:center;
+align-items:flex-start;
+
+padding-top:80px;
+padding-bottom:80px;
+
 position:relative;
-overflow:auto;
+overflow-y:auto;
 }
 
 /* GLASS BOX */
 
 .glass{
-background:rgba(255,255,255,0.40);
+background:rgba(255,255,255,0.45);
 backdrop-filter:blur(8px);
 padding:50px;
 border-radius:20px;
 max-width:720px;
+width:85%;
+
 text-align:center;
 box-shadow:0 10px 30px rgba(0,0,0,0.25);
-animation:slideUp 1.2s ease;
 }
 
 /* SCROLL ANIMATION */
