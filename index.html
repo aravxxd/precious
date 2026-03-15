@@ -16,31 +16,6 @@ font-family:'Quicksand', sans-serif;
 overflow:hidden;
 }
 
-  .points{
-display:flex;
-flex-direction:column;
-gap:25px;
-margin-top:20px;
-}
-
-.reminder{
-background:rgba(255,255,255,0.6);
-padding:18px 22px;
-border-radius:14px;
-font-size:18px;
-line-height:1.6;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-
-opacity:0;
-transform:translateY(40px);
-transition:all 0.8s ease;
-}
-
-.reminder.show{
-opacity:1;
-transform:translateY(0);
-}
-
 /* PAGE 1 */
 
 #page1{
@@ -75,6 +50,12 @@ justify-content:center;
 align-items:center;
 }
 
+.page2text{
+font-size:20px;
+color:#333;
+line-height:1.6;
+}
+
 /* PAGE 3 */
 
 #page3{
@@ -91,6 +72,22 @@ padding-bottom:80px;
 
 position:relative;
 overflow-y:auto;
+}
+
+/* PAGE 4 */
+
+#page4{
+display:none;
+height:100vh;
+background:linear-gradient(to bottom,#bfe9ff,#e6f7ff);
+
+display:flex;
+justify-content:center;
+align-items:flex-start;
+
+overflow-y:auto;
+padding-top:80px;
+padding-bottom:80px;
 }
 
 /* GLASS BOX */
@@ -110,19 +107,6 @@ text-align:center;
 box-shadow:0 10px 30px rgba(0,0,0,0.25);
 }
 
-/* SCROLL ANIMATION */
-
-@keyframes slideUp{
-from{
-opacity:0;
-transform:translateY(60px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
 /* TITLES */
 
 .page2title{
@@ -139,15 +123,15 @@ color:#d63384;
 margin-bottom:25px;
 }
 
-/* PAGE 3 LIST */
-
-.points{
-text-align:left;
-font-family:'Playfair Display', serif;
-font-size:19px;
-line-height:1.7;
-color:#222;
+.page4title{
+font-family:'Playfair Display',serif;
+font-size:42px;
+color:#ff4fa3;
+margin-bottom:35px;
+text-align:center;
 }
+
+/* PAGE 3 REMINDERS */
 
 .points{
 display:flex;
@@ -155,6 +139,90 @@ flex-direction:column;
 gap:25px;
 margin-top:25px;
 margin-bottom:40px;
+text-align:left;
+}
+
+.reminder{
+background:rgba(255,255,255,0.6);
+padding:18px 22px;
+border-radius:14px;
+font-size:18px;
+line-height:1.6;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+.reminder.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* PAGE 4 ITEMS */
+
+.page4box{
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(6px);
+
+max-width:720px;
+width:85%;
+
+padding:50px;
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.precious-list{
+display:flex;
+flex-direction:column;
+gap:35px;
+}
+
+.precious-item{
+background:rgba(255,255,255,0.8);
+padding:20px 25px;
+border-radius:14px;
+
+font-size:18px;
+line-height:1.7;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+.precious-item.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.quote{
+margin-top:40px;
+padding:25px;
+
+font-style:italic;
+font-size:18px;
+
+background:rgba(255,255,255,0.75);
+border-left:5px solid #ff7ab6;
+
+border-radius:10px;
+
+line-height:1.7;
+
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+.quote.show{
+opacity:1;
+transform:translateY(0);
 }
 
 /* BUTTON */
@@ -214,7 +282,7 @@ animation:float 8s linear infinite;
 100%{transform:translateY(0px);}
 }
 
-/* STARS (PAGE 3 ONLY) */
+/* STARS */
 
 .stars{
 position:absolute;
@@ -238,103 +306,6 @@ animation:twinkle 3s infinite alternate;
 @keyframes twinkle{
 from{opacity:0.3; transform:scale(1);}
 to{opacity:1; transform:scale(1.6);}
-}
-
-/* PAGE 4 */
-
-#page4{
-display:none;
-height:100vh;
-background:linear-gradient(to bottom,#bfe9ff,#e6f7ff);
-
-display:flex;
-justify-content:center;
-align-items:flex-start;
-
-overflow-y:auto;
-padding-top:80px;
-padding-bottom:80px;
-}
-
-/* container */
-
-.page4box{
-background:rgba(255,255,255,0.6);
-backdrop-filter:blur(6px);
-
-max-width:720px;
-width:85%;
-
-padding:50px;
-border-radius:20px;
-
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-
-/* title */
-
-.page4title{
-font-family:'Playfair Display',serif;
-font-size:42px;
-color:#ff4fa3;
-margin-bottom:35px;
-text-align:center;
-}
-
-/* bullet list */
-
-.precious-list{
-display:flex;
-flex-direction:column;
-gap:35px;
-}
-
-/* bullet cards */
-
-.precious-item{
-background:rgba(255,255,255,0.8);
-padding:20px 25px;
-border-radius:14px;
-
-font-size:18px;
-line-height:1.7;
-
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-
-opacity:0;
-transform:translateY(40px);
-transition:all 0.8s ease;
-}
-
-.precious-item.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* quote */
-
-.quote{
-margin-top:40px;
-padding:25px;
-
-font-style:italic;
-font-size:18px;
-
-background:rgba(255,255,255,0.75);
-border-left:5px solid #ff7ab6;
-
-border-radius:10px;
-
-line-height:1.7;
-
-opacity:0;
-transform:translateY(40px);
-transition:all 0.8s ease;
-}
-
-.quote.show{
-opacity:1;
-transform:translateY(0);
 }
 
 </style>
@@ -399,18 +370,12 @@ In short, I wanna be like you so I can be in this world for longer...
 <div class="points">
 
 <div class="reminder">💖 Please keep yourself hydrated always throughout the day to keep your precious body healthy.</div>
-
-<div class="reminder">💖 Try to sleep as early as possible so you get good 6-7 hours of sleep everyday and to protect your inner child.</div>
-
-<div class="reminder">💖 Eat well and please eat properly whenever you do to keep yourself healthy and active.</div>
-
-<div class="reminder">💖 Please continue doing activities like walking, stretching and all you do to keep yourself healthy.</div>
-
-<div class="reminder">💖 Do not raise your temper on anybody. Your health matters the most and so please do not even bother the slightest when something bothers you.</div>
-
-<div class="reminder">💖 Say no to things you don’t want to do or see or listen.</div>
-
-<div class="reminder">💖 Be kind to yourself. I love the fact that you are so knowledgeable about things nobody would know and speak so intelligently. Please never change.</div>
+<div class="reminder">💖 Try to sleep as early as possible so you get good 6-7 hours of sleep everyday.</div>
+<div class="reminder">💖 Eat well and please eat properly whenever you do to keep yourself healthy.</div>
+<div class="reminder">💖 Continue doing activities like walking and stretching.</div>
+<div class="reminder">💖 Do not raise your temper on anybody.</div>
+<div class="reminder">💖 Say no to things you don’t want.</div>
+<div class="reminder">💖 Be kind to yourself and never change.</div>
 
 </div>
 
@@ -420,7 +385,7 @@ In short, I wanna be like you so I can be in this world for longer...
 
 </div>
 
-  <!-- PAGE 4 -->
+<!-- PAGE 4 -->
 
 <div id="page4">
 
@@ -431,15 +396,15 @@ In short, I wanna be like you so I can be in this world for longer...
 <div class="precious-list">
 
 <div class="precious-item">
-• <b>The Music in Your Voice:</b> There is a rare kind of magic when you sing. It’s not just about the music; it’s the way you seem to pour your soul into every melody. I could listen to you forever and never get tired of the tunes.
+• <b>The Music in Your Voice:</b> There is a rare kind of magic when you sing. It’s not just about the music; it’s the way you seem to pour your soul into every melody.
 </div>
 
 <div class="precious-item">
-• <b>Your Love for Food and Life:</b> I love how much you appreciate the good things—especially when it’s food. Whether it’s the comfort of Kerala cuisine, cheesecake or discovering a new favorite dish, seeing your face light up when we speak about food is one of my favorite sights.
+• <b>Your Love for Food and Life:</b> I love how much you appreciate the good things—especially when it’s food.
 </div>
 
 <div class="precious-item">
-• <b>The Care You Provide:</b> You have this effortless grace and a heart that’s bigger than you let on. You make the ordinary feel extraordinary just by being around you.
+• <b>The Care You Provide:</b> You have this effortless grace and a heart that’s bigger than you let on.
 </div>
 
 </div>
@@ -452,14 +417,26 @@ In short, I wanna be like you so I can be in this world for longer...
 
 </div>
 
-  function showPage4(){
+<script>
+
+/* PAGE SWITCH */
+
+function showPage2(){
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").style.display="flex";
+}
+
+function showPage3(){
+document.getElementById("page2").style.display="none";
+document.getElementById("page3").style.display="flex";
+}
+
+function showPage4(){
 document.getElementById("page3").style.display="none";
 document.getElementById("page4").style.display="flex";
 }
 
-<script>
-
-/* TYPING INTRO */
+/* TYPING */
 
 const text1="Hello Precious";
 const text2="Thank you for existing";
@@ -478,23 +455,11 @@ if(callback)callback();
 typing();
 }
 
-typeText(text1,document.getElementById("line1"),80,function(){
-typeText(text2,document.getElementById("line2"),60,function(){
-typeText(text3,document.getElementById("line3"),50);
+typeText(text1,line1,80,function(){
+typeText(text2,line2,60,function(){
+typeText(text3,line3,50);
 });
 });
-
-/* PAGE SWITCH */
-
-function showPage2(){
-document.getElementById("page1").style.display="none";
-document.getElementById("page2").style.display="flex";
-}
-
-function showPage3(){
-document.getElementById("page2").style.display="none";
-document.getElementById("page3").style.display="flex";
-}
 
 /* HEARTS */
 
@@ -505,33 +470,15 @@ heart.innerHTML="❤";
 
 heart.style.left=Math.random()*100+"vw";
 heart.style.animationDuration=(Math.random()*3+3)+"s";
-heart.style.fontSize=(Math.random()*10+15)+"px";
 
 document.body.appendChild(heart);
 
-setTimeout(()=>{heart.remove();},6000);
+setTimeout(()=>heart.remove(),6000);
 }
 
 setInterval(createHeart,300);
 
-/* PARTICLES */
-
-function createParticle(){
-const particle=document.createElement("div");
-particle.classList.add("particle");
-
-particle.style.left=Math.random()*100+"vw";
-particle.style.top=Math.random()*100+"vh";
-particle.style.animationDuration=(Math.random()*5+5)+"s";
-
-document.body.appendChild(particle);
-
-setTimeout(()=>{particle.remove();},10000);
-}
-
-setInterval(createParticle,500);
-
-/* STARS FOR PAGE 3 */
+/* STARS */
 
 function createStar(){
 const star=document.createElement("div");
@@ -542,44 +489,10 @@ star.style.top=Math.random()*100+"vh";
 
 document.querySelector("#page3 .stars").appendChild(star);
 
-setTimeout(()=>{star.remove();},4000);
+setTimeout(()=>star.remove(),4000);
 }
 
 setInterval(createStar,200);
-
-  /* SCROLL REVEAL FOR PAGE 3 */
-
-const reminders = document.querySelectorAll(".reminder");
-
-function revealOnScroll(){
-reminders.forEach(rem=>{
-const top = rem.getBoundingClientRect().top;
-const trigger = window.innerHeight - 80;
-
-if(top < trigger){
-rem.classList.add("show");
-}
-});
-}
-
-document.getElementById("page3").addEventListener("scroll", revealOnScroll);
-
-  /* PAGE 4 SCROLL REVEAL */
-
-function revealPage4(){
-const items=document.querySelectorAll(".precious-item, .quote");
-
-items.forEach(el=>{
-const top=el.getBoundingClientRect().top;
-const trigger=window.innerHeight-80;
-
-if(top<trigger){
-el.classList.add("show");
-}
-});
-}
-
-document.getElementById("page4").addEventListener("scroll",revealPage4);
 
 </script>
 
