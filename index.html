@@ -63,8 +63,6 @@ background:url("tulips.jpg") center/cover no-repeat;
 overflow-y:auto;
 padding:120px 0;
 position:relative;
-display:flex;
-justify-content:center;
 }
 
 /* PAGE 4 */
@@ -73,27 +71,22 @@ justify-content:center;
 background:linear-gradient(#bfe9ff,#e6f7ff);
 overflow-y:auto;
 padding:120px 0;
-display:flex;
-justify-content:center;
-align-items:center;
 }
 
 /* PAGE 5 */
 
 #page5{
-position:relative;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
+position:relative;
 color:white;
 }
 
 #page5::before{
 content:"";
 position:absolute;
-top:0;
-left:0;
 width:100%;
 height:100%;
 background:url("vjmin.jpg") center/cover no-repeat;
@@ -140,13 +133,7 @@ color:#ff4fa3;
 margin-bottom:40px;
 }
 
-.page5title{
-font-family:'Playfair Display',serif;
-font-size:44px;
-margin-bottom:25px;
-}
-
-/* PAGE 3 REMINDERS */
+/* PAGE 3 */
 
 .points{
 display:flex;
@@ -342,15 +329,11 @@ In short, I want to be like you so I can stay in this world longer.
 
 <!-- PAGE 3 -->
 
-<!-- PAGE 3 -->
-
 <div id="page3" class="page">
 
 <div class="stars"></div>
 
-<div class="container">
-
-<div class="glass">
+<div class="glass container">
 
 <div class="page3title">May I remind you few things?</div>
 
@@ -366,12 +349,7 @@ In short, I want to be like you so I can stay in this world longer.
 
 </div>
 
-<!-- NEXT BUTTON -->
-<div style="text-align:center;">
 <button class="next-btn" onclick="showPage('page4')">Next</button>
-</div>
-
-</div>
 
 </div>
 
@@ -422,14 +400,12 @@ In short, I want to be like you so I can stay in this world longer.
 </div>
 
 <div class="page5text">
-
 People come and go, and feelings can be loud or quiet.  
 But when everything else gets still, you’re the one I want standing there.
 
 Labels don't really cover it.
 
 In the BTS sense of the word—through the music, the food, and the late nights—you are my soulmate.
-
 </div>
 
 </div>
@@ -441,8 +417,16 @@ In the BTS sense of the word—through the music, the food, and the late nights�
 /* PAGE SWITCH */
 
 function showPage(id){
+
 document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+
+if(id==="page1" || id==="page2" || id==="page5"){
 document.getElementById(id).style.display="flex";
+}
+else{
+document.getElementById(id).style.display="block";
+}
+
 }
 
 /* TYPING */
