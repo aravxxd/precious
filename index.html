@@ -3,19 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Hello Precious</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Pacifico&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
 <style>
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html,body{
-  margin:0;
-  padding:0;
-  font-family:'Quicksand', sans-serif;
   height:100%;
+  width:100%;
+  font-family:'Quicksand', sans-serif;
+  overflow:hidden; /* NO SCROLL ANYWHERE */
 }
 
 /* PAGE SYSTEM */
@@ -23,20 +26,20 @@ html,body{
 .page{
   display:none;
   width:100%;
-  min-height:100vh;
+  height:100dvh;          /* better for mobile than 100vh */
 }
 
 /* GLOBAL TOP-LEFT BACK BUTTON */
 
 .back-top{
   position:fixed;
-  top:16px;
-  left:16px;
+  top:12px;
+  left:12px;
   z-index:20;
   display:flex;
   align-items:center;
   gap:8px;
-  padding:8px 18px;
+  padding:7px 16px;
   border-radius:999px;
   border:none;
   background:rgba(0,0,0,0.35);
@@ -64,12 +67,12 @@ html,body{
 
 .title{
   font-family:'Pacifico',cursive;
-  font-size:52px;
+  font-size:3.2rem;
   color:#ff4fa3;
 }
 
 .text{
-  font-size:28px;
+  font-size:1.4rem;
   color:#444;
   margin-top:8px;
 }
@@ -82,7 +85,6 @@ html,body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:40px 0;
 }
 
 /* PAGE 3 */
@@ -92,16 +94,16 @@ html,body{
   position:relative;
   display:flex;
   justify-content:center;
-  align-items:center;
-  padding:40px 0;
+  align-items:center; /* center glass */
 }
 
 /* PAGE 4 */
 
 #page4{
   background:linear-gradient(#bfe9ff,#e6f7ff);
-  padding:120px 0;
-  overflow-y:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 /* PAGE 5 */
@@ -113,7 +115,6 @@ html,body{
   text-align:left;
   position:relative;
   color:white;
-  padding:40px 10px;
   background:url("purple-book.jpg") center/cover no-repeat;
 }
 
@@ -126,7 +127,6 @@ html,body{
   text-align:left;
   position:relative;
   color:white;
-  padding:40px 10px;
   background:url("cheesecake.jpg") center/cover no-repeat;
 }
 
@@ -149,7 +149,7 @@ html,body{
 
 .glass{
   background:rgba(255,255,255,0.85);
-  padding:50px;
+  padding:40px 32px;
   border-radius:20px;
   text-align:center;
   box-shadow:0 10px 30px rgba(0,0,0,0.2);
@@ -161,29 +161,29 @@ html,body{
 
 .page2title{
   font-family:'Pacifico',cursive;
-  font-size:42px;
+  font-size:2.4rem;
   color:#ff4fa3;
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
 
 .page3title{
   font-family:'Playfair Display',serif;
-  font-size:40px;
+  font-size:2.3rem;
   color:#d63384;
-  margin-bottom:30px;
+  margin-bottom:24px;
 }
 
 .page4title{
   font-family:'Playfair Display',serif;
-  font-size:42px;
+  font-size:2.4rem;
   color:#ff4fa3;
-  margin-bottom:40px;
+  margin-bottom:28px;
 }
 
 /* PAGE 2 text */
 
 .page2text{
-  font-size:20px;
+  font-size:1.1rem;
   color:#333;
   line-height:1.6;
 }
@@ -193,17 +193,17 @@ html,body{
 .points{
   display:flex;
   flex-direction:column;
-  gap:30px;
-  margin-bottom:40px;
+  gap:18px;
+  margin-bottom:28px;
   text-align:left;
 }
 
 .reminder{
   background:white;
-  padding:20px;
+  padding:14px 16px;
   border-radius:14px;
-  font-size:18px;
-  line-height:1.6;
+  font-size:1rem;
+  line-height:1.5;
   box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
@@ -211,41 +211,44 @@ html,body{
 
 .page4box{
   background:white;
-  padding:50px;
+  padding:32px 26px;
   border-radius:20px;
   box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  max-width:720px;
+  width:85%;
 }
 
 .precious-list{
   display:flex;
   flex-direction:column;
-  gap:35px;
-  margin-bottom:40px;
+  gap:20px;
+  margin-bottom:24px;
 }
 
 .precious-item{
   background:#fff;
-  padding:20px;
+  padding:16px;
   border-radius:14px;
-  font-size:18px;
-  line-height:1.7;
+  font-size:1rem;
+  line-height:1.6;
   box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 .quote{
-  margin-top:20px;
-  padding:25px;
+  margin-top:16px;
+  padding:18px;
   font-style:italic;
   border-left:5px solid #ff7ab6;
   background:#fff;
   border-radius:10px;
+  font-size:0.95rem;
 }
 
 /* PAGE 5 transparent content box */
 
 .page5box{
   background:rgba(0,0,0,0.55);
-  padding:40px 35px;
+  padding:32px 24px;
   border-radius:20px;
   max-width:780px;
   width:90%;
@@ -256,8 +259,8 @@ html,body{
 
 .page5title{
   font-family:'Playfair Display',serif;
-  font-size:32px;
-  margin-bottom:25px;
+  font-size:2rem;
+  margin-bottom:20px;
 }
 
 .page5list{
@@ -265,8 +268,8 @@ html,body{
   padding-left:22px;
   display:flex;
   flex-direction:column;
-  gap:18px;
-  font-size:18px;
+  gap:14px;
+  font-size:1rem;
   line-height:1.7;
 }
 
@@ -276,7 +279,7 @@ html,body{
   position:relative;
   z-index:1;
   background:rgba(0,0,0,0.7);
-  padding:40px 35px;
+  padding:32px 24px;
   border-radius:20px;
   max-width:780px;
   width:90%;
@@ -285,12 +288,12 @@ html,body{
 
 .page6title{
   font-family:'Playfair Display',serif;
-  font-size:32px;
-  margin-bottom:25px;
+  font-size:2rem;
+  margin-bottom:20px;
 }
 
 .page6text{
-  font-size:18px;
+  font-size:1rem;
   line-height:1.8;
   white-space:pre-line;
 }
@@ -298,9 +301,9 @@ html,body{
 /* BUTTON */
 
 .next-btn{
-  margin-top:35px;
-  padding:14px 40px;
-  font-size:18px;
+  margin-top:26px;
+  padding:12px 32px;
+  font-size:1rem;
   border:none;
   border-radius:40px;
   background:white;
@@ -370,6 +373,29 @@ html,body{
   0%{transform:translateY(-10vh) rotate(0deg);opacity:1;}
   100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
 }
+
+/* MOBILE TWEAKS */
+
+@media (max-width:600px){
+  .title{font-size:2.4rem;}
+  .text{font-size:1.1rem;}
+  .glass,
+  .page4box,
+  .page5box,
+  .page6box{
+    padding:24px 18px;
+    width:90%;
+  }
+  .page2text,
+  .reminder,
+  .page5list,
+  .page6text{
+    font-size:0.95rem;
+  }
+  .next-btn{
+    width:100%;
+  }
+}
 </style>
 </head>
 
@@ -432,7 +458,7 @@ html,body{
 
 <!-- PAGE 4 -->
 <div id="page4" class="page">
-  <div class="container page4box">
+  <div class="page4box">
     <div class="page4title">Why are you precious?</div>
 
     <div class="precious-list">
@@ -485,7 +511,6 @@ The reason I treat you special is because you are the only one who's kind and lo
 Please don't tell anyone anywhere that I made this for you or I'm going to be misunderstood on peak. It's going to stay between only us.
     </div>
 
-    <!-- FINAL NEXT: loops back to start -->
     <button class="next-btn" onclick="showPage('page1')">Next</button>
   </div>
 </div>
@@ -508,11 +533,8 @@ function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.style.display="none");
 
   const page = document.getElementById(id);
-  if(id==="page1" || id==="page2" || id==="page5" || id==="page6"){
-    page.style.display="flex";
-  }else{
-    page.style.display="block";
-  }
+  page.style.display = "flex";
+
   currentPage = id;
   updateBackButton();
 }
