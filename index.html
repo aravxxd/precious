@@ -14,23 +14,33 @@
   padding:0;
 }
 
-html,body{
+/* 1. LOCK GLOBAL SCROLLING COMPLETELY */
+html, body{
   height:100%;
   width:100%;
   font-family:'Quicksand', sans-serif;
-  overflow:hidden; /* NO SCROLL ANYWHERE */
+  overflow:hidden; 
 }
 
-/* PAGE SYSTEM */
-
+/* 2. MAKE EACH PAGE ITS OWN SCROLLABLE CONTAINER */
 .page{
-  display:none;
+  display:none; 
   width:100%;
-  height:100dvh;          /* better for mobile than 100vh */
+  height:100dvh;
+  overflow-y:auto; /* Allows scrolling inside the page only when needed */
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* 3. WRAPPER TO PERFECTLY CENTER CONTENT OR ALLOW SCROLLING WITHOUT CUT-OFF */
+.page-wrapper{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  padding:70px 15px; /* Spacing so it doesn't touch edges on mobile */
 }
 
 /* GLOBAL TOP-LEFT BACK BUTTON */
-
 .back-top{
   position:fixed;
   top:12px;
@@ -39,10 +49,10 @@ html,body{
   display:flex;
   align-items:center;
   gap:8px;
-  padding:7px 16px;
+  padding:8px 16px;
   border-radius:999px;
   border:none;
-  background:rgba(0,0,0,0.35);
+  background:rgba(0,0,0,0.4);
   color:#fff;
   font-size:14px;
   cursor:pointer;
@@ -53,143 +63,71 @@ html,body{
   font-size:18px;
 }
 
-/* PAGE 1 */
+/* BACKGROUNDS */
+#page1 { background:#ffe6f0; }
+#page2 { background:url("dog.jpg") center/cover no-repeat; }
+#page3 { background:url("tulips.jpg") center/cover no-repeat; }
+#page4 { background:linear-gradient(#bfe9ff,#e6f7ff); }
+#page5 { background:url("purple-book.jpg") center/cover no-repeat; }
 
-#page1{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#ffe6f0;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-
-.title{
-  font-family:'Pacifico',cursive;
-  font-size:3.2rem;
-  color:#ff4fa3;
-}
-
-.text{
-  font-size:1.4rem;
-  color:#444;
-  margin-top:8px;
-}
-
-/* PAGE 2 */
-
-#page2{
-  background:url("dog.jpg") center/cover no-repeat;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-/* PAGE 3 */
-
-#page3{
-  background:url("tulips.jpg") center/cover no-repeat;
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:center; /* center glass */
-}
-
-/* PAGE 4 */
-
-#page4{
-  background:linear-gradient(#bfe9ff,#e6f7ff);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* PAGE 5 */
-
-#page5{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:left;
-  position:relative;
-  color:white;
-  background:url("purple-book.jpg") center/cover no-repeat;
-}
-
-/* PAGE 6 */
-
-#page6{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:left;
-  position:relative;
-  color:white;
-  background:url("cheesecake.jpg") center/cover no-repeat;
-}
-
-/* dark overlay for page 6 so white cheesecake doesn't kill contrast */
-#page6::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.65);
-  z-index:0;
+/* Page 6 Background with built-in dark overlay so it doesn't scroll away */
+#page6 { 
+  background:linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url("cheesecake.jpg") center/cover no-repeat; 
 }
 
 /* CONTAINERS */
-
-.container{
-  max-width:720px;
-  width:85%;
-  margin:auto;
+.container, .glass, .page4box, .page5box, .page6box, #page1-content {
+  margin:auto; /* Centers vertically and horizontally inside the flex wrapper */
+  width:100%;
 }
 
 .glass{
   background:rgba(255,255,255,0.85);
   padding:40px 32px;
   border-radius:20px;
+  max-width:720px;
   text-align:center;
   box-shadow:0 10px 30px rgba(0,0,0,0.2);
   position:relative;
   z-index:1;
 }
 
-/* TITLES */
+#page1-content{
+  text-align:center;
+  max-width:720px;
+}
 
+/* TITLES */
+.title{
+  font-family:'Pacifico',cursive;
+  font-size:3.5rem;
+  color:#ff4fa3;
+}
+.text{
+  font-size:1.4rem;
+  color:#444;
+  margin-top:8px;
+}
 .page2title{
   font-family:'Pacifico',cursive;
-  font-size:2.4rem;
+  font-size:2.5rem;
   color:#ff4fa3;
   margin-bottom:16px;
 }
-
-.page3title{
-  font-family:'Playfair Display',serif;
-  font-size:2.3rem;
-  color:#d63384;
-  margin-bottom:24px;
-}
-
-.page4title{
+.page3title, .page4title, .page5title, .page6title{
   font-family:'Playfair Display',serif;
   font-size:2.4rem;
-  color:#ff4fa3;
-  margin-bottom:28px;
+  margin-bottom:24px;
 }
+.page3title, .page4title{ color:#d63384; }
+.page4title{ color:#ff4fa3; text-align:center; }
 
-/* PAGE 2 text */
-
+/* TEXTS & LISTS */
 .page2text{
-  font-size:1.1rem;
+  font-size:1.15rem;
   color:#333;
   line-height:1.6;
 }
-
-/* PAGE 3 */
-
 .points{
   display:flex;
   flex-direction:column;
@@ -197,119 +135,87 @@ html,body{
   margin-bottom:28px;
   text-align:left;
 }
-
 .reminder{
   background:white;
-  padding:14px 16px;
+  padding:16px 20px;
   border-radius:14px;
-  font-size:1rem;
+  font-size:1.05rem;
   line-height:1.5;
   box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
 /* PAGE 4 */
-
 .page4box{
   background:white;
-  padding:32px 26px;
+  padding:40px 32px;
   border-radius:20px;
   box-shadow:0 10px 30px rgba(0,0,0,0.2);
   max-width:720px;
-  width:85%;
 }
-
 .precious-list{
   display:flex;
   flex-direction:column;
   gap:20px;
   margin-bottom:24px;
 }
-
 .precious-item{
   background:#fff;
-  padding:16px;
+  padding:18px 22px;
   border-radius:14px;
-  font-size:1rem;
+  font-size:1.05rem;
   line-height:1.6;
   box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
-
 .quote{
   margin-top:16px;
-  padding:18px;
+  padding:20px;
   font-style:italic;
   border-left:5px solid #ff7ab6;
   background:#fff;
   border-radius:10px;
-  font-size:0.95rem;
+  font-size:1rem;
 }
 
-/* PAGE 5 transparent content box */
-
-.page5box{
-  background:rgba(0,0,0,0.55);
-  padding:32px 24px;
+/* PAGE 5 & 6 */
+.page5box, .page6box{
+  background:rgba(0,0,0,0.7);
+  padding:40px 35px;
   border-radius:20px;
   max-width:780px;
-  width:90%;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-  position:relative;
-  z-index:1;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  color:white;
 }
-
-.page5title{
-  font-family:'Playfair Display',serif;
-  font-size:2rem;
-  margin-bottom:20px;
-}
-
 .page5list{
   list-style:disc;
   padding-left:22px;
   display:flex;
   flex-direction:column;
-  gap:14px;
-  font-size:1rem;
+  gap:16px;
+  font-size:1.1rem;
   line-height:1.7;
 }
-
-/* PAGE 6 transparent content box */
-
-.page6box{
-  position:relative;
-  z-index:1;
-  background:rgba(0,0,0,0.7);
-  padding:32px 24px;
-  border-radius:20px;
-  max-width:780px;
-  width:90%;
-  box-shadow:0 10px 30px rgba(0,0,0,0.6);
-}
-
-.page6title{
-  font-family:'Playfair Display',serif;
-  font-size:2rem;
-  margin-bottom:20px;
-}
-
 .page6text{
-  font-size:1rem;
+  font-size:1.1rem;
   line-height:1.8;
   white-space:pre-line;
 }
 
 /* BUTTON */
-
 .next-btn{
-  margin-top:26px;
-  padding:12px 32px;
-  font-size:1rem;
+  margin-top:28px;
+  padding:14px 36px;
+  font-size:1.1rem;
   border:none;
   border-radius:40px;
   background:white;
   color:#ff4fa3;
   cursor:pointer;
   animation:glow 2s infinite alternate;
+  font-family:'Quicksand', sans-serif;
+  font-weight:600;
+}
+.btn-center{
+  text-align:center;
 }
 
 @keyframes glow{
@@ -317,32 +223,30 @@ html,body{
   to{box-shadow:0 0 20px white,0 0 40px #ff4fa3;}
 }
 
-/* HEARTS */
-
-.heart{
+/* HEARTS, STARS, PETALS (Fixed to Viewport so they fall nicely) */
+.heart, .petal{
   position:fixed;
   top:0;
-  color:#ff8fcf;
-  font-size:22px;
-  animation:fall linear forwards;
   pointer-events:none;
-  z-index:5;
 }
+.heart{ color:#ff8fcf; font-size:22px; animation:fall linear forwards; z-index:5; }
+.petal{ color:#ff8fcf; font-size:16px; animation:petalfall linear forwards; z-index:4; }
 
 @keyframes fall{
   0%{transform:translateY(-10vh);opacity:1;}
   100%{transform:translateY(110vh);opacity:0;}
 }
-
-/* STARS */
-
-.stars{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:1;
+@keyframes petalfall{
+  0%{transform:translateY(-10vh) rotate(0deg);opacity:1;}
+  100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
 }
 
+.stars{
+  position:fixed; /* Keeps stars from scrolling away */
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+}
 .star{
   position:absolute;
   width:3px;
@@ -351,50 +255,25 @@ html,body{
   border-radius:50%;
   animation:twinkle 3s infinite alternate;
 }
-
 @keyframes twinkle{
-  from{opacity:0.3;transform:scale(1);}
-  to{opacity:1;transform:scale(1.6);}
+  from{opacity:0.2;transform:scale(1);}
+  to{opacity:1;transform:scale(1.5);}
 }
 
-/* PETALS */
-
-.petal{
-  position:fixed;
-  top:0;
-  color:#ff8fcf;
-  font-size:16px;
-  animation:petalfall linear forwards;
-  pointer-events:none;
-  z-index:4;
-}
-
-@keyframes petalfall{
-  0%{transform:translateY(-10vh) rotate(0deg);opacity:1;}
-  100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
-}
-
-/* MOBILE TWEAKS */
-
+/* RESPONSIVE MOBILE SIZING */
 @media (max-width:600px){
-  .title{font-size:2.4rem;}
-  .text{font-size:1.1rem;}
-  .glass,
-  .page4box,
-  .page5box,
-  .page6box{
-    padding:24px 18px;
-    width:90%;
+  .title{ font-size:2.8rem; }
+  .text{ font-size:1.2rem; }
+  .glass, .page4box, .page5box, .page6box {
+    padding:28px 20px;
   }
-  .page2text,
-  .reminder,
-  .page5list,
-  .page6text{
-    font-size:0.95rem;
+  .page2title, .page3title, .page4title, .page5title, .page6title {
+    font-size: 2rem;
   }
-  .next-btn{
-    width:100%;
+  .page2text, .reminder, .precious-item, .page5list, .page6text, .quote {
+    font-size: 0.95rem;
   }
+  .next-btn{ width:100%; max-width:300px; }
 }
 </style>
 </head>
@@ -407,111 +286,114 @@ html,body{
 </button>
 
 <!-- PAGE 1 -->
-<div id="page1" class="page" style="display:flex">
-  <div>
-    <div class="title" id="line1"></div>
-    <div class="text" id="line2"></div>
-    <div class="text" id="line3"></div>
-
-    <button class="next-btn" onclick="showPage('page2')">Next</button>
+<div id="page1" class="page" style="display:block">
+  <div class="page-wrapper">
+    <div id="page1-content">
+      <div class="title" id="line1"></div>
+      <div class="text" id="line2"></div>
+      <div class="text" id="line3"></div>
+      <button class="next-btn" onclick="showPage('page2')">Next</button>
+    </div>
   </div>
 </div>
 
 <!-- PAGE 2 -->
 <div id="page2" class="page">
-  <div class="glass container">
-    <div class="page2title">Why are you special?</div>
-
-    <div class="page2text">
-      You are the kind of person who carries light inside you.<br>
-      You are becoming the best version of yourself.<br><br>
-      Like how I started loving books because of you.<br>
-      I want to be courageous like you.<br>
-      I want to be strong like you.<br><br>
-      In short, I want to be like you so I can stay in this world longer.
+  <div class="page-wrapper">
+    <div class="glass">
+      <div class="page2title">Why are you special?</div>
+      <div class="page2text">
+        You are the kind of person who carries light inside you.<br>
+        You are becoming the best version of yourself.<br><br>
+        Like how I started loving books because of you.<br>
+        I want to be courageous like you.<br>
+        I want to be strong like you.<br><br>
+        In short, I want to be like you so I can stay in this world longer.
+      </div>
+      <button class="next-btn" onclick="showPage('page3')">Next</button>
     </div>
-
-    <button class="next-btn" onclick="showPage('page3')">Next</button>
   </div>
 </div>
 
 <!-- PAGE 3 -->
 <div id="page3" class="page">
   <div class="stars"></div>
-
-  <div class="glass container">
-    <div class="page3title">May I remind you few things?</div>
-
-    <div class="points">
-      <div class="reminder">💖 Please keep yourself hydrated throughout the day.</div>
-      <div class="reminder">💖 Try to sleep early and get 6-7 hours of rest.</div>
-      <div class="reminder">💖 Eat properly and stay healthy.</div>
-      <div class="reminder">💖 Continue walking and stretching.</div>
-      <div class="reminder">💖 Do not raise your temper on anyone.</div>
-      <div class="reminder">💖 Say no to things you don't want.</div>
-      <div class="reminder">💖 Be kind to yourself and never change.</div>
+  <div class="page-wrapper">
+    <div class="glass">
+      <div class="page3title">May I remind you few things?</div>
+      <div class="points">
+        <div class="reminder">💖 Please keep yourself hydrated throughout the day.</div>
+        <div class="reminder">💖 Try to sleep early and get 6-7 hours of rest.</div>
+        <div class="reminder">💖 Eat properly and stay healthy.</div>
+        <div class="reminder">💖 Continue walking and stretching.</div>
+        <div class="reminder">💖 Do not raise your temper on anyone.</div>
+        <div class="reminder">💖 Say no to things you don't want.</div>
+        <div class="reminder">💖 Be kind to yourself and never change.</div>
+      </div>
+      <button class="next-btn" onclick="showPage('page4')">Next</button>
     </div>
-
-    <button class="next-btn" onclick="showPage('page4')">Next</button>
   </div>
 </div>
 
 <!-- PAGE 4 -->
 <div id="page4" class="page">
-  <div class="page4box">
-    <div class="page4title">Why are you precious?</div>
-
-    <div class="precious-list">
-      <div class="precious-item">
-        • <b>The Music in Your Voice:</b> There is a rare magic when you sing. It feels like you pour your soul into every melody.
+  <div class="page-wrapper">
+    <div class="page4box">
+      <div class="page4title">Why are you precious?</div>
+      <div class="precious-list">
+        <div class="precious-item">
+          • <b>The Music in Your Voice:</b> There is a rare magic when you sing. It feels like you pour your soul into every melody.
+        </div>
+        <div class="precious-item">
+          • <b>Your Love for Food and Life:</b> Seeing your face light up when talking about food is one of my favorite sights.
+        </div>
+        <div class="precious-item">
+          • <b>The Care You Provide:</b> You have a heart bigger than you let on and make ordinary moments extraordinary.
+        </div>
       </div>
-
-      <div class="precious-item">
-        • <b>Your Love for Food and Life:</b> Seeing your face light up when talking about food is one of my favorite sights.
+      <div class="quote">
+        "Let it be the world's best coffee you make or the moments when only you understand I'm breaking and comfort me — I'm grateful for your presence."
       </div>
-
-      <div class="precious-item">
-        • <b>The Care You Provide:</b> You have a heart bigger than you let on and make ordinary moments extraordinary.
+      <div class="btn-center">
+        <button class="next-btn" onclick="showPage('page5')">Next</button>
       </div>
     </div>
-
-    <div class="quote">
-      "Let it be the world's best coffee you make or the moments when only you understand I'm breaking and comfort me — I'm grateful for your presence."
-    </div>
-
-    <button class="next-btn" onclick="showPage('page5')">Next</button>
   </div>
 </div>
 
 <!-- PAGE 5 -->
 <div id="page5" class="page">
-  <div class="page5box">
-    <div class="page5title">What I wanna say?</div>
-
-    <ul class="page5list">
-      <li>I made this just to remind you that you're seen, you're heard, and you're incredibly precious to me. You make my world a lot brighter just by existing in it.</li>
-      <li>Thanks for letting me be myself.</li>
-      <li>I think love is about giving everything one can. I've longed so much to be loved and have done so much just to be heard and talked to once or twice a day. I don't know when that will change, and it hurts to keep giving so much for crumbs, but I've realised I have to be stronger to deal with this. Still, every single effort I put in for you feels worth every second of my time.</li>
-    </ul>
-
-    <button class="next-btn" onclick="showPage('page6')">Next</button>
+  <div class="page-wrapper">
+    <div class="page5box">
+      <div class="page5title">What I wanna say?</div>
+      <ul class="page5list">
+        <li>I made this just to remind you that you're seen, you're heard, and you're incredibly precious to me. You make my world a lot brighter just by existing in it.</li>
+        <li>Thanks for letting me be myself.</li>
+        <li>I think love is about giving everything one can. I've longed so much to be loved and have done so much just to be heard and talked to once or twice a day. I don't know when that will change, and it hurts to keep giving so much for crumbs, but I've realised I have to be stronger to deal with this. Still, every single effort I put in for you feels worth every second of my time.</li>
+      </ul>
+      <div class="btn-center">
+        <button class="next-btn" onclick="showPage('page6')">Next</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- PAGE 6 -->
 <div id="page6" class="page">
-  <div class="page6box">
-    <div class="page6title">A final note...</div>
-
-    <div class="page6text">
+  <div class="page-wrapper">
+    <div class="page6box">
+      <div class="page6title">A final note...</div>
+      <div class="page6text">
 I really only made this to remind you that you're seen, you're heard, and you're incredibly precious to me. I have tried my best to learn you.
 
 The reason I treat you special is because you are the only one who's kind and lovely and I felt the need that you also have to feel special, and today I would like to take the opportunity to try to make you feel happy and to see a happy smile on your face.
 
 Please don't tell anyone anywhere that I made this for you or I'm going to be misunderstood on peak. It's going to stay between only us.
+      </div>
+      <div class="btn-center">
+        <button class="next-btn" onclick="showPage('page1')">Next</button>
+      </div>
     </div>
-
-    <button class="next-btn" onclick="showPage('page1')">Next</button>
   </div>
 </div>
 
@@ -530,10 +412,15 @@ function updateBackButton(){
 
 /* PAGE SWITCH */
 function showPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.style.display="none");
-
-  const page = document.getElementById(id);
-  page.style.display = "flex";
+  // Hide all
+  document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+  
+  // Show target
+  const targetPage = document.getElementById(id);
+  targetPage.style.display = "block";
+  
+  // Force scroll position to Top of the box (so you don't start midway down on long pages)
+  targetPage.scrollTop = 0;
 
   currentPage = id;
   updateBackButton();
@@ -581,10 +468,14 @@ function createHeart(){
 }
 setInterval(createHeart,300);
 
-/* STARS (only on page3) */
+/* STARS (fixed on page 3) */
 function createStar(){
   const starsWrap=document.querySelector("#page3 .stars");
   if(!starsWrap) return;
+  
+  /* only create stars if page 3 is visible to save resources */
+  if(document.getElementById("page3").style.display === "none") return;
+
   const s=document.createElement("div");
   s.className="star";
   s.style.left=Math.random()*100+"vw";
