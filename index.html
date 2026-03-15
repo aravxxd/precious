@@ -240,6 +240,103 @@ from{opacity:0.3; transform:scale(1);}
 to{opacity:1; transform:scale(1.6);}
 }
 
+/* PAGE 4 */
+
+#page4{
+display:none;
+height:100vh;
+background:linear-gradient(to bottom,#bfe9ff,#e6f7ff);
+
+display:flex;
+justify-content:center;
+align-items:flex-start;
+
+overflow-y:auto;
+padding-top:80px;
+padding-bottom:80px;
+}
+
+/* container */
+
+.page4box{
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(6px);
+
+max-width:720px;
+width:85%;
+
+padding:50px;
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* title */
+
+.page4title{
+font-family:'Playfair Display',serif;
+font-size:42px;
+color:#ff4fa3;
+margin-bottom:35px;
+text-align:center;
+}
+
+/* bullet list */
+
+.precious-list{
+display:flex;
+flex-direction:column;
+gap:35px;
+}
+
+/* bullet cards */
+
+.precious-item{
+background:rgba(255,255,255,0.8);
+padding:20px 25px;
+border-radius:14px;
+
+font-size:18px;
+line-height:1.7;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+.precious-item.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* quote */
+
+.quote{
+margin-top:40px;
+padding:25px;
+
+font-style:italic;
+font-size:18px;
+
+background:rgba(255,255,255,0.75);
+border-left:5px solid #ff7ab6;
+
+border-radius:10px;
+
+line-height:1.7;
+
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+.quote.show{
+opacity:1;
+transform:translateY(0);
+}
+
 </style>
 </head>
 
@@ -317,11 +414,48 @@ In short, I wanna be like you so I can be in this world for longer...
 
 </div>
 
-<button class="next-btn">Next</button>
+<button class="next-btn" onclick="showPage4()">Next</button>
 
 </div>
 
 </div>
+
+  <!-- PAGE 4 -->
+
+<div id="page4">
+
+<div class="page4box">
+
+<div class="page4title">Why are you precious?</div>
+
+<div class="precious-list">
+
+<div class="precious-item">
+• <b>The Music in Your Voice:</b> There is a rare kind of magic when you sing. It’s not just about the music; it’s the way you seem to pour your soul into every melody. I could listen to you forever and never get tired of the tunes.
+</div>
+
+<div class="precious-item">
+• <b>Your Love for Food and Life:</b> I love how much you appreciate the good things—especially when it’s food. Whether it’s the comfort of Kerala cuisine, cheesecake or discovering a new favorite dish, seeing your face light up when we speak about food is one of my favorite sights.
+</div>
+
+<div class="precious-item">
+• <b>The Care You Provide:</b> You have this effortless grace and a heart that’s bigger than you let on. You make the ordinary feel extraordinary just by being around you.
+</div>
+
+</div>
+
+<div class="quote">
+“Let it be the world’s best coffee you make or the times only you understand I’m breaking and you comfort me, I’m really grateful for your presence.”
+</div>
+
+</div>
+
+</div>
+
+  function showPage4(){
+document.getElementById("page3").style.display="none";
+document.getElementById("page4").style.display="flex";
+}
 
 <script>
 
@@ -429,6 +563,23 @@ rem.classList.add("show");
 }
 
 document.getElementById("page3").addEventListener("scroll", revealOnScroll);
+
+  /* PAGE 4 SCROLL REVEAL */
+
+function revealPage4(){
+const items=document.querySelectorAll(".precious-item, .quote");
+
+items.forEach(el=>{
+const top=el.getBoundingClientRect().top;
+const trigger=window.innerHeight-80;
+
+if(top<trigger){
+el.classList.add("show");
+}
+});
+}
+
+document.getElementById("page4").addEventListener("scroll",revealPage4);
 
 </script>
 
