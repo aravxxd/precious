@@ -59,7 +59,7 @@ html,body{
   background:#ffe6f0;
   text-align:center;
   position:relative;
-  overflow:hidden; /* no scroll here */
+  overflow:hidden;
 }
 
 .title{
@@ -92,7 +92,7 @@ html,body{
   position:relative;
   display:flex;
   justify-content:center;
-  align-items:center; /* vertically center the glass */
+  align-items:center;
   padding:40px 0;
 }
 
@@ -114,7 +114,29 @@ html,body{
   position:relative;
   color:white;
   padding:40px 10px;
-  background:url("purple-book.jpg") center/cover no-repeat; /* your purple book image */
+  background:url("purple-book.jpg") center/cover no-repeat;
+}
+
+/* PAGE 6 */
+
+#page6{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:left;
+  position:relative;
+  color:white;
+  padding:40px 10px;
+  background:url("cheesecake.jpg") center/cover no-repeat;
+}
+
+/* dark overlay for page 6 so white cheesecake doesn't kill contrast */
+#page6::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+  z-index:0;
 }
 
 /* CONTAINERS */
@@ -131,6 +153,8 @@ html,body{
   border-radius:20px;
   text-align:center;
   box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  position:relative;
+  z-index:1;
 }
 
 /* TITLES */
@@ -226,6 +250,8 @@ html,body{
   max-width:780px;
   width:90%;
   box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  position:relative;
+  z-index:1;
 }
 
 .page5title{
@@ -239,9 +265,34 @@ html,body{
   padding-left:22px;
   display:flex;
   flex-direction:column;
-  gap:18px; /* even gaps */
+  gap:18px;
   font-size:18px;
   line-height:1.7;
+}
+
+/* PAGE 6 transparent content box */
+
+.page6box{
+  position:relative;
+  z-index:1;
+  background:rgba(0,0,0,0.7);
+  padding:40px 35px;
+  border-radius:20px;
+  max-width:780px;
+  width:90%;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+.page6title{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  margin-bottom:25px;
+}
+
+.page6text{
+  font-size:18px;
+  line-height:1.8;
+  white-space:pre-line;
 }
 
 /* BUTTON */
@@ -371,7 +422,7 @@ html,body{
       <div class="reminder">💖 Eat properly and stay healthy.</div>
       <div class="reminder">💖 Continue walking and stretching.</div>
       <div class="reminder">💖 Do not raise your temper on anyone.</div>
-      <div class="reminder">💖 Say no to things you don’t want.</div>
+      <div class="reminder">💖 Say no to things you don't want.</div>
       <div class="reminder">💖 Be kind to yourself and never change.</div>
     </div>
 
@@ -399,7 +450,7 @@ html,body{
     </div>
 
     <div class="quote">
-      “Let it be the world's best coffee you make or the moments when only you understand I'm breaking and comfort me — I’m grateful for your presence.”
+      "Let it be the world's best coffee you make or the moments when only you understand I'm breaking and comfort me — I'm grateful for your presence."
     </div>
 
     <button class="next-btn" onclick="showPage('page5')">Next</button>
@@ -412,12 +463,30 @@ html,body{
     <div class="page5title">What I wanna say?</div>
 
     <ul class="page5list">
-      <li>I made this just to remind you that you’re seen, you’re heard, and you’re incredibly precious to me. You make my world a lot brighter just by existing in it.</li>
+      <li>I made this just to remind you that you're seen, you're heard, and you're incredibly precious to me. You make my world a lot brighter just by existing in it.</li>
       <li>Thanks for letting me be myself.</li>
-      <li>I think love is about giving everything one can. I have longed so much to be loved and done so much just to be heard and talked for once or twice a day, I don’t know when that will change, but the fate hurts doing so much for crumbs, and I realised I have to be stronger to even deal with this. But I fekt every single effort im putting for you is worth every second of my time...</li>
+      <li>I think love is about giving everything one can. I've longed so much to be loved and have done so much just to be heard and talked to once or twice a day. I don't know when that will change, and it hurts to keep giving so much for crumbs, but I've realised I have to be stronger to deal with this. Still, every single effort I put in for you feels worth every second of my time.</li>
     </ul>
 
-    <button class="next-btn" onclick="showPage('page1')">Restart story</button>
+    <button class="next-btn" onclick="showPage('page6')">Next</button>
+  </div>
+</div>
+
+<!-- PAGE 6 -->
+<div id="page6" class="page">
+  <div class="page6box">
+    <div class="page6title">A final note...</div>
+
+    <div class="page6text">
+I really only made this to remind you that you're seen, you're heard, and you're incredibly precious to me. I have tried my best to learn you.
+
+The reason I treat you special is because you are the only one who's kind and lovely and I felt the need that you also have to feel special, and today I would like to take the opportunity to try to make you feel happy and to see a happy smile on your face.
+
+Please don't tell anyone anywhere that I made this for you or I'm going to be misunderstood on peak. It's going to stay between only us.
+    </div>
+
+    <!-- FINAL NEXT: loops back to start -->
+    <button class="next-btn" onclick="showPage('page1')">Next</button>
   </div>
 </div>
 
@@ -439,7 +508,7 @@ function showPage(id){
   document.querySelectorAll(".page").forEach(p=>p.style.display="none");
 
   const page = document.getElementById(id);
-  if(id==="page1" || id==="page2" || id==="page5"){
+  if(id==="page1" || id==="page2" || id==="page5" || id==="page6"){
     page.style.display="flex";
   }else{
     page.style.display="block";
@@ -454,6 +523,7 @@ function goBack(){
   else if(currentPage === "page3") showPage("page2");
   else if(currentPage === "page4") showPage("page3");
   else if(currentPage === "page5") showPage("page4");
+  else if(currentPage === "page6") showPage("page5");
 }
 
 /* TYPING */
